@@ -91,8 +91,9 @@
 					<h2>测试测试测试测试测试测试</h2></li>
 			</ul>
 			<!-- es-panel end -->
-
+		
 		</div>
+		<div>${subjectList }</div>
 		<div id="indexPage" class="es-page"></div>
 	</div>
 	<input id="subTotal" type="hidden" value="${total }">
