@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="getStudentList" resultType="Student">
-		SELECT * 
+		SELECT *
 		  FROM tb_student
 	</select>
 	

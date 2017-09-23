@@ -12,8 +12,6 @@
 	href="resources/font-awesome/css/font-awesome.css" />
 <link rel="stylesheet" href="resources/layui/css/layui.css" />
 <script type="text/javascript" src="resources/jquery/jquery-3.2.1.js"></script>
-<script type="text/javascript"
-	src="resources/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script>
 <script type="text/javascript" src="resources/layui/layui.js"></script>
 
 <style type="text/css">
@@ -46,9 +44,9 @@
 		<div class="content">
 			<!-- es-tab start -->
 			<div class="es-tab">
-				<div class="layui-tab layui-tab-brief">
+				<div class="layui-tab layui-tab-brief" lay-filter="index-tab-filter">
 					<ul class="layui-tab-title" style="height: 50px;">
-						<li class="layui-this">网站设置</li>
+						<li class="layui-this">全部帖子</li>
 						<li>用户管理</li>
 						<li>权限分配</li>
 						<li>商品管理</li>
@@ -57,47 +55,45 @@
 					<div class="es-search">
 						<a href="#"><i class="layui-icon" style="font-size: 30px;">&#xe615;</i></a>
 					</div>
+					<div class="layui-tab-content">
+						<div class="layui-tab-item layui-show">
+
+							<!-- es-panel start -->
+							<ul class="es-panel es-list layui-form" id="subjectListPanel">
+								<li><a href="esys.html" class="es-avator"><img
+										src="resources/images/tattoo67.png" /></a>
+									<h2>
+										<a href="#">测试测试测试测试测试测试</a>
+									</h2>
+									<div class="es-list-info">
+										<div class="layui-form-item">
+											<div class="layui-input-block">
+												<input type="radio" name="sex" value="男" title="男">
+												<input type="radio" name="sex" value="女" title="女">
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<!-- es-panel end -->
+						</div>
+						<div class="layui-tab-item">内容2</div>
+						<div class="layui-tab-item">内容3</div>
+						<div class="layui-tab-item">内容4</div>
+						<div class="layui-tab-item">内容5</div>
+					</div>
+					<div id="tabPage" class="es-page page-panel"></div>
+
 				</div>
 			</div>
 			<!-- es-tab end -->
 
-			<!-- es-panel start -->
-			<ul class="es-panel es-list">
-				<li><a href="esys.html" class="es-avator"><img
-						src="resources/images/tattoo67.png" /></a>
-					<h2>
-						<a href="#">测试测试测试测试测试测试</a>
-					</h2></li>
-				<li><a href="esys.html" class="es-avator"><img
-						src="resources/images/tattoo67.png" /></a>
-					<h2>测试测试测试测试测试测试</h2></li>
-				<li><a href="esys.html" class="es-avator"><img
-						src="resources/images/tattoo67.png" /></a>
-					<h2>测试测试测试测试测试测试</h2></li>
-				<li><a href="esys.html" class="es-avator"><img
-						src="resources/images/tattoo67.png" /></a>
-					<h2>测试测试测试测试测试测试</h2></li>
-				<li><a href="esys.html" class="es-avator"><img
-						src="resources/images/tattoo67.png" /></a>
-					<h2>测试测试测试测试测试测试</h2></li>
-				<li><a href="esys.html" class="es-avator"><img
-						src="resources/images/tattoo67.png" /></a>
-					<h2>测试测试测试测试测试测试</h2></li>
-				<li><a href="esys.html" class="es-avator"><img
-						src="resources/images/tattoo67.png" /></a>
-					<h2>测试测试测试测试测试测试</h2></li>
-				<li><a href="esys.html" class="es-avator"><img
-						src="resources/images/tattoo67.png" /></a>
-					<h2>测试测试测试测试测试测试</h2></li>
-			</ul>
-			<!-- es-panel end -->
-		
 		</div>
-		<div>${subjectList }</div>
-		<div id="indexPage" class="es-page"></div>
 	</div>
 	<input id="subTotal" type="hidden" value="${total }">
+	<input id="pageUrl" type="hidden" value="">
 	<script type="text/javascript" src="resources/index/js/index.js"></script>
+	<script type="text/javascript" src="resources/define/subject.js"></script>
 	<script type="text/javascript">
     
   </script>
