@@ -1,9 +1,8 @@
 $(document).ready(function() {
-	layui.use(['element', 'layer', 'laypage', 'util','form'], function() {
+	layui.use(['element', 'layer', 'laypage', 'util'], function() {
 		var e = layui.element,
 			layer = layui.layer,
 			laypage = layui.laypage,
-			form = layui.form,
 			layutil = layui.util;
 
 //================== 数据获取 start ========================
@@ -14,53 +13,26 @@ $(document).ready(function() {
         page : pageIndex,
         limit : limit
       }
-    
 		e.on('tab(index-tab-filter)',function(data){
 		  if(data.index == 0){
 		    var url = "./subject/list";
 		    $.ajax({
-		      type : 'GET',
+		      type : 'POST',
 		      url : url,
 		      data : "page=" + pageIndex + "&limit=" + limit,
 		      success : function(data){
-		        $('#subjectListPanel').empty();
-		        for(var i in data){
-		          subjectAppend(i, data);  
-		        }
+		        console.log(data);
 		      },
 		      error : function(){
 		        console.log("帖子太过久远,找不到了呢...")
 		      }
 		      
 		    })
-		    
 		  }
 		});
-    function subjectAppend(i, data){
-      var infodiv = $('#subjectListPanel');  //&#xe605;
-      infodiv.append('<li id="li' + i + '"><h2>' + data[i].subjectTitle + '</h2></li>');
-      var optionDiv = '<div class="es-list-info">'
-                      + '<div class="layui-form-item">'
-                        + '<div class="layui-input-block" id="radioDiv' + data[i].subjectId + '" >'
-                        + '</div>'
-                      + '</div>'
-                    + '</div>';
-    }
-
-/*
- * 
- *
-    <div class="es-list-info">
-      <div class="layui-form-item">
-        <div class="layui-input-block">
-          <input type="radio" name="sex" value="男" title="男">
-          <input type="radio" name="sex" value="女" title="女">
-        </div>
-      </div>
-    </div>
-
- 
- */		
+		
+		
+		
 
 //================== 分页 start ========================		
 
@@ -86,9 +58,9 @@ $(document).ready(function() {
 		});
 
 		
-		//$('html').niceScroll();
-	//================== 分页 end ========================		
 		
+	//================== 分页 end ========================		
+		$('html').niceScroll();
 		$('.logo').on('mouseenter', function() {
 			$(this).children('i').css('color', '#ff0000');
 		});

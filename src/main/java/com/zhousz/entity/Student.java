@@ -1,10 +1,6 @@
 package com.zhousz.entity;
 
 public class Student {
-  
-  private int studentId;
-  
-
   private String password;
   
   private String studentName;
@@ -15,14 +11,6 @@ public class Student {
 
   public String getPassword() {
     return password;
-  }
-
-  public int getStudentId() {
-    return studentId;
-  }
-  
-  public void setStudentId(int studentId) {
-    this.studentId = studentId;
   }
 
   public void setPassword(String password) {
@@ -55,10 +43,8 @@ public class Student {
 
   @Override
   public String toString() {
-    return "Student [studentId=" + studentId + ", password=" + password + ", studentName=" + studentName + ", result="
-        + result + ", sclass=" + sclass + "]";
+    return "StudentDao [password=" + password + ", studentName=" + studentName + ", result=" + result + ", sclass="
+        + sclass + "]";
   }
 
-
-  
 }

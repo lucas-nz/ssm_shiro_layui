@@ -12,6 +12,8 @@
 	href="resources/font-awesome/css/font-awesome.css" />
 <link rel="stylesheet" href="resources/layui/css/layui.css" />
 <script type="text/javascript" src="resources/jquery/jquery-3.2.1.js"></script>
+<script type="text/javascript"
+	src="resources/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script>
 <script type="text/javascript" src="resources/layui/layui.js"></script>
 
 <style type="text/css">
@@ -24,15 +26,15 @@
 				class="layui-icon">&#xe756;</i> </a>
 
 			<div class="nav">
-				<a href="#"> <i class="layui-icon">&#xe705;</i> <font>文档</font>
-				</a> <a href="#"> <i class="layui-icon">&#xe6ed;</i> <font>教学视频</font>
-				</a> <a href="#"> <i class="layui-icon">&#xe6b2;</i> <font>检验</font>
+				<a href="./esysdoc"> <i class="layui-icon">&#xe705;</i> <font>文档</font>
+				</a> <a href="./esysvadio"> <i class="layui-icon">&#xe6ed;</i> <font>教学视频</font>
+				</a> <a href="./esystest"> <i class="layui-icon">&#xe6b2;</i> <font>检验</font>
 				</a>
 
 			</div>
 			<div class="nav-user">
 				<a href="#"> <span><i class="fa fa-user-circle-o fa-5x"></i></span>
-				</a> <span> <a href="#">登录</a> <a href="#">注册</a>
+				</a> <span> <a href="./login">登录</a> <a href="#">注册</a>
 				</span> <a href="#"> <i class="fa fa-qq" style="font-size: 20px;"></i>
 				</a> <a href="#"> <i class="fa fa-wechat" style="font-size: 20px;"></i>
 				</a>
@@ -46,7 +48,7 @@
 			<div class="es-tab">
 				<div class="layui-tab layui-tab-brief" lay-filter="index-tab-filter">
 					<ul class="layui-tab-title" style="height: 50px;">
-						<li class="layui-this">全部帖子</li>
+						<li class="layui-this" >全部帖子</li>
 						<li>用户管理</li>
 						<li>权限分配</li>
 						<li>商品管理</li>
@@ -55,40 +57,24 @@
 					<div class="es-search">
 						<a href="#"><i class="layui-icon" style="font-size: 30px;">&#xe615;</i></a>
 					</div>
-					<div class="layui-tab-content">
-						<div class="layui-tab-item layui-show">
-
-							<!-- es-panel start -->
-							<ul class="es-panel es-list layui-form" id="subjectListPanel">
-								<li><a href="esys.html" class="es-avator"><img
-										src="resources/images/tattoo67.png" /></a>
-									<h2>
-										<a href="#">测试测试测试测试测试测试</a>
-									</h2>
-									<div class="es-list-info">
-										<div class="layui-form-item">
-											<div class="layui-input-block">
-												<input type="radio" name="sex" value="男" title="男">
-												<input type="radio" name="sex" value="女" title="女">
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<!-- es-panel end -->
-						</div>
+					<div class="layui-tab-content es-panel">
+						<div class="layui-tab-item layui-show">内容1</div>
 						<div class="layui-tab-item">内容2</div>
 						<div class="layui-tab-item">内容3</div>
 						<div class="layui-tab-item">内容4</div>
 						<div class="layui-tab-item">内容5</div>
 					</div>
-					<div id="tabPage" class="es-page page-panel"></div>
-
+					<div id="tabPage" class="es-page page-panel">
+					</div>
 				</div>
 			</div>
 			<!-- es-tab end -->
 
+
+
 		</div>
+		<div>${resultSet }</div>
+		<div id="indexPage" class="es-page"></div>
 	</div>
 	<input id="subTotal" type="hidden" value="${total }">
 	<input id="pageUrl" type="hidden" value="">

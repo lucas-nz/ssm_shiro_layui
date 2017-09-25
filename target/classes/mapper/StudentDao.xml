@@ -3,19 +3,12 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhousz.dao.StudentDao">
-	<select id="getCount" resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM tb_student
-	</select>
-	
-	<select id="getStudentById" resultType="Student">
-		SELECT *
-		  FROM tb_student
-		 WHERE studentId = #{studentId}
-	</select>
-	
-	<select id="getStudentList" resultType="Student">
+	<select id="getStudentAll" resultType="Student">
 		SELECT *
 		  FROM tb_student
 	</select>
-	
+  
+  	
+  
+  
 </mapper>
