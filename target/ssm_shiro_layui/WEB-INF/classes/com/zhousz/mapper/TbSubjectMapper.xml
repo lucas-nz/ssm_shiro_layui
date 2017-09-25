@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhousz.mapper.TbSubjectMapper" >
+  <resultMap id="BaseResultMap" type="com.zhousz.pojo.TbSubject" >
+    <id column="subjectId" property="subjectid" jdbcType="INTEGER" />
+    <result column="subjectTitle" property="subjecttitle" jdbcType="VARCHAR" />
+    <result column="subjectOptionA" property="subjectoptiona" jdbcType="VARCHAR" />
+    <result column="subjectOptionB" property="subjectoptionb" jdbcType="VARCHAR" />
+    <result column="subjectOptionC" property="subjectoptionc" jdbcType="VARCHAR" />
+    <result column="subjectOptionD" property="subjectoptiond" jdbcType="VARCHAR" />
+    <result column="subjectAnswer" property="subjectanswer" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zhousz.pojo.TbSubject" extends="BaseResultMap" >
+    <result column="subjectParse" property="subjectparse" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    subjectId, subjectTitle, subjectOptionA, subjectOptionB, subjectOptionC, subjectOptionD, 
+    subjectAnswer
+  </sql>
+  <sql id="Blob_Column_List" >
+    subjectParse
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.zhousz.pojo.TbSubjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_subject
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zhousz.pojo.TbSubjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_subject
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_subject
+    where subjectId = #{subjectid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_subject
+    where subjectId = #{subjectid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zhousz.pojo.TbSubjectExample" >
+    delete from tb_subject
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zhousz.pojo.TbSubject" >
+    insert into tb_subject (subjectId, subjectTitle, subjectOptionA, 
+      subjectOptionB, subjectOptionC, subjectOptionD, 
+      subjectAnswer, subjectParse)
+    values (#{subjectid,jdbcType=INTEGER}, #{subjecttitle,jdbcType=VARCHAR}, #{subjectoptiona,jdbcType=VARCHAR}, 
+      #{subjectoptionb,jdbcType=VARCHAR}, #{subjectoptionc,jdbcType=VARCHAR}, #{subjectoptiond,jdbcType=VARCHAR}, 
+      #{subjectanswer,jdbcType=VARCHAR}, #{subjectparse,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhousz.pojo.TbSubject" >
+    insert into tb_subject
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="subjectid != null" >
+        subjectId,
+      </if>
+      <if test="subjecttitle != null" >
+        subjectTitle,
+      </if>
+      <if test="subjectoptiona != null" >
+        subjectOptionA,
+      </if>
+      <if test="subjectoptionb != null" >
+        subjectOptionB,
+      </if>
+      <if test="subjectoptionc != null" >
+        subjectOptionC,
+      </if>
+      <if test="subjectoptiond != null" >
+        subjectOptionD,
+      </if>
+      <if test="subjectanswer != null" >
+        subjectAnswer,
+      </if>
+      <if test="subjectparse != null" >
+        subjectParse,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="subjectid != null" >
+        #{subjectid,jdbcType=INTEGER},
+      </if>
+      <if test="subjecttitle != null" >
+        #{subjecttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectoptiona != null" >
+        #{subjectoptiona,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectoptionb != null" >
+        #{subjectoptionb,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectoptionc != null" >
+        #{subjectoptionc,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectoptiond != null" >
+        #{subjectoptiond,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectanswer != null" >
+        #{subjectanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectparse != null" >
+        #{subjectparse,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zhousz.pojo.TbSubjectExample" resultType="java.lang.Integer" >
+    select count(*) from tb_subject
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_subject
+    <set >
+      <if test="record.subjectid != null" >
+        subjectId = #{record.subjectid,jdbcType=INTEGER},
+      </if>
+      <if test="record.subjecttitle != null" >
+        subjectTitle = #{record.subjecttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectoptiona != null" >
+        subjectOptionA = #{record.subjectoptiona,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectoptionb != null" >
+        subjectOptionB = #{record.subjectoptionb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectoptionc != null" >
+        subjectOptionC = #{record.subjectoptionc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectoptiond != null" >
+        subjectOptionD = #{record.subjectoptiond,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectanswer != null" >
+        subjectAnswer = #{record.subjectanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectparse != null" >
+        subjectParse = #{record.subjectparse,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_subject
+    set subjectId = #{record.subjectid,jdbcType=INTEGER},
+      subjectTitle = #{record.subjecttitle,jdbcType=VARCHAR},
+      subjectOptionA = #{record.subjectoptiona,jdbcType=VARCHAR},
+      subjectOptionB = #{record.subjectoptionb,jdbcType=VARCHAR},
+      subjectOptionC = #{record.subjectoptionc,jdbcType=VARCHAR},
+      subjectOptionD = #{record.subjectoptiond,jdbcType=VARCHAR},
+      subjectAnswer = #{record.subjectanswer,jdbcType=VARCHAR},
+      subjectParse = #{record.subjectparse,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_subject
+    set subjectId = #{record.subjectid,jdbcType=INTEGER},
+      subjectTitle = #{record.subjecttitle,jdbcType=VARCHAR},
+      subjectOptionA = #{record.subjectoptiona,jdbcType=VARCHAR},
+      subjectOptionB = #{record.subjectoptionb,jdbcType=VARCHAR},
+      subjectOptionC = #{record.subjectoptionc,jdbcType=VARCHAR},
+      subjectOptionD = #{record.subjectoptiond,jdbcType=VARCHAR},
+      subjectAnswer = #{record.subjectanswer,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhousz.pojo.TbSubject" >
+    update tb_subject
+    <set >
+      <if test="subjecttitle != null" >
+        subjectTitle = #{subjecttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectoptiona != null" >
+        subjectOptionA = #{subjectoptiona,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectoptionb != null" >
+        subjectOptionB = #{subjectoptionb,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectoptionc != null" >
+        subjectOptionC = #{subjectoptionc,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectoptiond != null" >
+        subjectOptionD = #{subjectoptiond,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectanswer != null" >
+        subjectAnswer = #{subjectanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectparse != null" >
+        subjectParse = #{subjectparse,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where subjectId = #{subjectid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zhousz.pojo.TbSubject" >
+    update tb_subject
+    set subjectTitle = #{subjecttitle,jdbcType=VARCHAR},
+      subjectOptionA = #{subjectoptiona,jdbcType=VARCHAR},
+      subjectOptionB = #{subjectoptionb,jdbcType=VARCHAR},
+      subjectOptionC = #{subjectoptionc,jdbcType=VARCHAR},
+      subjectOptionD = #{subjectoptiond,jdbcType=VARCHAR},
+      subjectAnswer = #{subjectanswer,jdbcType=VARCHAR},
+      subjectParse = #{subjectparse,jdbcType=LONGVARCHAR}
+    where subjectId = #{subjectid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhousz.pojo.TbSubject" >
+    update tb_subject
+    set subjectTitle = #{subjecttitle,jdbcType=VARCHAR},
+      subjectOptionA = #{subjectoptiona,jdbcType=VARCHAR},
+      subjectOptionB = #{subjectoptionb,jdbcType=VARCHAR},
+      subjectOptionC = #{subjectoptionc,jdbcType=VARCHAR},
+      subjectOptionD = #{subjectoptiond,jdbcType=VARCHAR},
+      subjectAnswer = #{subjectanswer,jdbcType=VARCHAR}
+    where subjectId = #{subjectid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -14,14 +14,14 @@ $(document).ready(function() {
         limit : limit
       }
 		e.on('tab(index-tab-filter)',function(data){
-		  if(data.index == 0){
+		  if(data.index == 1){
 		    var url = "./subject/list";
 		    $.ajax({
 		      type : 'POST',
 		      url : url,
 		      data : "page=" + pageIndex + "&limit=" + limit,
 		      success : function(data){
-		        console.log(data);
+		        $('#subjectList').append(JSON.stringify(data));
 		      },
 		      error : function(){
 		        console.log("帖子太过久远,找不到了呢...")
@@ -60,7 +60,6 @@ $(document).ready(function() {
 		
 		
 	//================== 分页 end ========================		
-		$('html').niceScroll();
 		$('.logo').on('mouseenter', function() {
 			$(this).children('i').css('color', '#ff0000');
 		});

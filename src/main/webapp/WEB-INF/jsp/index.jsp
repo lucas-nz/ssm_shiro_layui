@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>  	
 <%@include file="common/tag.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,14 +8,14 @@
 <meta charset="UTF-8">
 <title>esys</title>
 <link rel="shortcut icon" href="resources/images/favicon.ico">
-<link rel="stylesheet" href="resources/index/css/index.css" />
+<link rel="stylesheet" href="resources/index/css/index.css"
+	charset="UTF-8" />
 <link rel="stylesheet"
 	href="resources/font-awesome/css/font-awesome.css" />
 <link rel="stylesheet" href="resources/layui/css/layui.css" />
 <script type="text/javascript" src="resources/jquery/jquery-3.2.1.js"></script>
-<script type="text/javascript"
-	src="resources/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script>
-<script type="text/javascript" src="resources/layui/layui.js"></script>
+<script type="text/javascript" src="resources/layui/layui.js"
+	charset="UTF-8"></script>
 
 <style type="text/css">
 </style>
@@ -33,8 +34,12 @@
 
 			</div>
 			<div class="nav-user">
-				<a href="#"> <span><i class="fa fa-user-circle-o fa-5x"></i></span>
-				</a> <span> <a href="./login">登录</a> <a href="#">注册</a>
+				<a href="#"> <span><i class="fa fa-user-circle-o fa-5x"></i></span></a>
+				<span>
+				<shiro:guest>
+				  <a href="./login">登录</a>
+				  <a href="#">注册</a>
+				</shiro:guest>
 				</span> <a href="#"> <i class="fa fa-qq" style="font-size: 20px;"></i>
 				</a> <a href="#"> <i class="fa fa-wechat" style="font-size: 20px;"></i>
 				</a>
@@ -48,8 +53,8 @@
 			<div class="es-tab">
 				<div class="layui-tab layui-tab-brief" lay-filter="index-tab-filter">
 					<ul class="layui-tab-title" style="height: 50px;">
-						<li class="layui-this" >全部帖子</li>
-						<li>用户管理</li>
+						<li class="layui-this">全部帖子</li>
+						<li>全部题目</li>
 						<li>权限分配</li>
 						<li>商品管理</li>
 						<li>订单管理</li>
@@ -59,13 +64,12 @@
 					</div>
 					<div class="layui-tab-content es-panel">
 						<div class="layui-tab-item layui-show">内容1</div>
-						<div class="layui-tab-item">内容2</div>
+						<div class="layui-tab-item" id="subjectList"></div>
 						<div class="layui-tab-item">内容3</div>
 						<div class="layui-tab-item">内容4</div>
 						<div class="layui-tab-item">内容5</div>
 					</div>
-					<div id="tabPage" class="es-page page-panel">
-					</div>
+					<div id="tabPage" class="es-page page-panel"></div>
 				</div>
 			</div>
 			<!-- es-tab end -->

@@ -7,15 +7,15 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ssm_shiro_layui Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	 <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.10</version>
-      <scope>test</scope>
-    </dependency>
-    
-    		<!-- 时间操作组件 -->
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- 时间操作组件 -->
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
@@ -37,7 +37,7 @@
 			<artifactId>commons-net</artifactId>
 			<version>3.3</version>
 		</dependency>
-    
+
 		<!-- 1.日志 -->
 		<!-- 实现slf4j接口并整合 -->
 		<dependency>
@@ -58,8 +58,8 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
-		
-		
+
+
 		<!-- Shiro start -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
@@ -72,27 +72,27 @@
 			<version>1.2.4</version>
 		</dependency>
 		<!-- Shiro end -->
-<dependency>  
-    <groupId>org.apache.shiro</groupId>  
-    <artifactId>shiro-core</artifactId>  
-    <version>1.2.4</version>  
-</dependency>  
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>1.2.4</version>
+		</dependency>
 
-<dependency>  
-    <groupId>org.apache.shiro</groupId>  
-    <artifactId>shiro-ehcache</artifactId>  
-    <version>1.2.4</version>  
-</dependency>  
-<dependency>  
-    <groupId>net.sf.ehcache</groupId>  
-    <artifactId>ehcache-core</artifactId>  
-    <version>2.5.3</version>  
-</dependency>  
-<dependency>  
-    <groupId>org.slf4j</groupId>  
-    <artifactId>slf4j-jdk14</artifactId>  
-    <version>1.6.4</version>  
-</dependency>  
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>1.6.4</version>
+		</dependency>
 		<!-- DAO: MyBatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -103,6 +103,12 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>3.4.2-fix</version>
 		</dependency>
 
 		<!-- 3.Servlet web -->
@@ -121,7 +127,7 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.5.4</version>
 		</dependency>
-				<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
+		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
@@ -207,8 +213,8 @@
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 			<version>3.2</version>
-		</dependency>    
-  </dependencies>
+		</dependency>
+	</dependencies>
 	<build>
 		<finalName>ssm_shiro_layui</finalName>
 	</build>
