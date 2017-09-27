@@ -39,8 +39,7 @@
 
 			</div>
 			<div class="nav-user">
-
-
+			<div class="nav-guest">
 				<shiro:guest>
 					<span> <a href="#"> <span><i
 								class="fa fa-user-circle-o fa-5x"></i></span></a> <a href="./toLogin">登录</a>
@@ -51,16 +50,28 @@
 					</a>
 					<a href="#"> <i class="fa fa-wechat" style="font-size: 20px;"></i></a>
 				</shiro:guest>
+			
+			</div>
 				<shiro:user>
-					<span> 
-					<a href="#"><shiro:principal></shiro:principal></a>
-					
-					
-					
-					
-					<a href="./logout"> <i class="fa  fa-sign-out" style="font-size: 20px;"></i>退了</a>
-					
-					</span>
+					<ul class="layui-nav" style="margin-top: -15px">
+						<li class="layui-nav-item">
+						<a>
+							<img src="<%=path%>/resources/images/handsome.jpg" style="border-radius: 100%;"/>
+							<span><shiro:principal></shiro:principal></span>
+						</a>
+							<dl class="layui-nav-child">
+								<dd>
+									<a href="javascript:;">修改信息</a>
+								</dd>
+								<dd>
+									<a href="javascript:;">安全管理</a>
+								</dd>
+								<dd>
+									<a href="./logout">退了</a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
 				</shiro:user>
 
 			</div>
@@ -81,7 +92,7 @@
 					<div class="es-search">
 						<a href="#"><i class="layui-icon" style="font-size: 30px;">&#xe615;</i></a>
 					</div>
-					<div class="layui-tab-content es-panel">
+					<div class="layui-tab-content es-panel" style="min-height: 400px;">
 						<div class="layui-tab-item layui-show">内容1</div>
 						<div class="layui-tab-item" id="subjectList"></div>
 						<div class="layui-tab-item">内容3</div>

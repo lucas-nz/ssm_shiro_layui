@@ -87,13 +87,14 @@ html body {
 	right: 10px;
 }
 
-.nav-user a {
-	margin-right: 8px;
-}
+
 
 .nav-user a font {
 	font-size: 15px;
 	color: #A9B7B7;
+}
+.nav-guest a{
+	margin-right: 8px;
 }
 
 .nav-user a i {

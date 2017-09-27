@@ -21,8 +21,9 @@ $(document).ready(function() {
 		      url : url,
 		      data : "page=" + pageIndex + "&limit=" + limit,
 		      success : function(data){
-		        $('#subjectList').append(JSON.stringify(data));
-		        console.log(data);
+		        for(i in data){
+		          console.log(i, JSON.stringify(data[i]));
+		        }
 		      },
 		      error : function(){
 		        console.log("帖子太过久远,找不到了呢...")
