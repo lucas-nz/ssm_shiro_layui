@@ -15,13 +15,14 @@ $(document).ready(function() {
       }
 		e.on('tab(index-tab-filter)',function(data){
 		  if(data.index == 1){
-		    var url = "./subject/list";
+		    var url = "./index/subject/list";
 		    $.ajax({
 		      type : 'POST',
 		      url : url,
 		      data : "page=" + pageIndex + "&limit=" + limit,
 		      success : function(data){
 		        $('#subjectList').append(JSON.stringify(data));
+		        console.log(data);
 		      },
 		      error : function(){
 		        console.log("帖子太过久远,找不到了呢...")

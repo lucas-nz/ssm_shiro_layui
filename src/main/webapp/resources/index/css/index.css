@@ -136,21 +136,48 @@ html body {
 }
 
 
-.main-body .layui-tab-brief .layui-tab-title {
+.es-tab .layui-tab-brief .layui-tab-title {
 	border-bottom: 1px dotted #e2e2e2;
 }
 
-.main-body .layui-tab li {
+.es-tab .layui-tab li {
 	line-height: 55px;
 }
 
-.main-body .layui-tab .layui-this:after {
+.es-tab .layui-tab .layui-this:after {
 	height: 50px;
 }
 
-.content{
-	margin: 0;
+.es-panel .layui-tab-brief .layui-tab-title {
+	border-bottom: 1px solid #e2e2e2;
 }
+
+.es-panel .layui-tab li {
+	line-height: 55px;
+}
+
+.es-panel .layui-tab .layui-this:after {
+	height: 50px;
+}
+
+
+
+.content{
+	margin: 0 0 0 0;
+}
+
+.login-content{
+	margin: 0 0 0 0;
+}
+.login-content .es-panel {
+	background-color: #fff;
+	padding: 0 20px 0 20px;
+	margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    min-height: 500px;
+}
+
 .es-tab{
 	background-color: #F9F9F9;
 }
@@ -169,7 +196,7 @@ html body {
 	background-color: #fff;
     margin-bottom: 15px;
     border-radius: 2px;
-    min-height: 300px;
+    min-height: 500px;
 }
 .page-panel {
 	background-color: #fff;

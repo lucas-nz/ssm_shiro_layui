@@ -1,20 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>  	
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%@include file="common/tag.jsp"%>
+<%
+  String path = request.getContextPath();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
 <title>esys</title>
-<link rel="shortcut icon" href="resources/images/favicon.ico">
-<link rel="stylesheet" href="resources/index/css/index.css"
+<link rel="shortcut icon" href="<%=path%>/resources/images/favicon.ico">
+<link rel="stylesheet" href="<%=path%>/resources/index/css/index.css"
 	charset="UTF-8" />
 <link rel="stylesheet"
-	href="resources/font-awesome/css/font-awesome.css" />
-<link rel="stylesheet" href="resources/layui/css/layui.css" />
-<script type="text/javascript" src="resources/jquery/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="resources/layui/layui.js"
+	href="<%=path%>/resources/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="<%=path%>/resources/layui/css/layui.css" />
+<script type="text/javascript"
+	src="<%=path%>/resources/jquery/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/layui/layui.js"
 	charset="UTF-8"></script>
 
 <style type="text/css">
@@ -23,7 +27,8 @@
 <body>
 	<div class="header">
 		<div class="main">
-			<a href="#" class="logo"><img src="resources/images/tattoo67.png" /><i
+			<a href="#" class="logo"><img
+				src="<%=path%>/resources/images/tattoo67.png" /><i
 				class="layui-icon">&#xe756;</i> </a>
 
 			<div class="nav">
@@ -34,15 +39,29 @@
 
 			</div>
 			<div class="nav-user">
-				<a href="#"> <span><i class="fa fa-user-circle-o fa-5x"></i></span></a>
-				<span>
+
+
 				<shiro:guest>
-				  <a href="./login">登录</a>
-				  <a href="#">注册</a>
+					<span> <a href="#"> <span><i
+								class="fa fa-user-circle-o fa-5x"></i></span></a> <a href="./toLogin">登录</a>
+						<a href="#">注册</a>
+
+					</span>
+					<a href="#"> <i class="fa fa-qq" style="font-size: 20px;"></i>
+					</a>
+					<a href="#"> <i class="fa fa-wechat" style="font-size: 20px;"></i></a>
 				</shiro:guest>
-				</span> <a href="#"> <i class="fa fa-qq" style="font-size: 20px;"></i>
-				</a> <a href="#"> <i class="fa fa-wechat" style="font-size: 20px;"></i>
-				</a>
+				<shiro:user>
+					<span> 
+					<a href="#"><shiro:principal></shiro:principal></a>
+					
+					
+					
+					
+					<a href="./logout"> <i class="fa  fa-sign-out" style="font-size: 20px;"></i>退了</a>
+					
+					</span>
+				</shiro:user>
 
 			</div>
 		</div>
@@ -82,8 +101,10 @@
 	</div>
 	<input id="subTotal" type="hidden" value="${total }">
 	<input id="pageUrl" type="hidden" value="">
-	<script type="text/javascript" src="resources/index/js/index.js"></script>
-	<script type="text/javascript" src="resources/define/subject.js"></script>
+	<script type="text/javascript"
+		src="<%=path%>/resources/index/js/index.js"></script>
+	<script type="text/javascript"
+		src="<%=path%>/resources/define/subject.js"></script>
 	<script type="text/javascript">
     
   </script>

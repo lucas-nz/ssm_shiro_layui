@@ -30,12 +30,8 @@ public class ShiroTest extends BaseTest {
   private TbStudentMapper tbStudentMapper; 
   
   
-  @Test
   public void testJDBCRealm() {
     
-    TbStudent student = tbStudentMapper.selectByPrimaryKey(10001);
-    System.out.println(student);
-    student.getPassword();
     //1.获取SecurityManager工厂,此处使用Ini配置文件初始化SecurityManager
     Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiroIni/shiro-jdbc-realm.ini");
     

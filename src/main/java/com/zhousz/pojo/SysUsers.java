@@ -50,4 +50,12 @@ public class SysUsers {
     public void setLocked(Boolean locked) {
         this.locked = locked;
     }
+
+    @Override
+    public String toString() {
+      return "SysUsers [id=" + id + ", username=" + username + ", password=" + password + ", salt=" + salt + ", locked="
+          + locked + "]";
+    }
+    
+    
 }
