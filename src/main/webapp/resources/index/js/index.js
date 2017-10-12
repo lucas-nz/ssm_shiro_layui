@@ -1,40 +1,75 @@
 $(document).ready(function() {
-	layui.use(['element', 'layer', 'laypage', 'util'], function() {
+	layui.use(['element', 'layer', 'laypage', 'util','form'], function() {
 		var e = layui.element,
 			layer = layui.layer,
 			laypage = layui.laypage,
+			form = layui.form,
 			layutil = layui.util;
-
+		
+		
+		
+		
+		
+    
 //================== 数据获取 start ========================
-    var url = "";
-    var pageIndex = 0;
-    var limit = 10;
-    var data = {
-        page : pageIndex,
-        limit : limit
+e.on('tab(index-tab-filter)',function(data){
+  if(data.index == 1){
+    var pageObj = {curr: 1, limit: 10};
+    ajaxPageHelper(pageObj);
+  }
+  
+  
+  
+  
+});
+		
+function ajaxPageHelper(pageObj){
+  $.ajax({
+    type : 'POST',
+    url : "index/subject/list",
+    data : "page=" + pageObj.curr + "&limit=" + pageObj.limit,
+    success : function(result){
+      var data = result.data;
+      var total = result.total;
+      $('#subjectList').empty();
+      for(i in data){
+        addSubject(i, data[i], pageObj.curr, pageObj.limit);
       }
-		e.on('tab(index-tab-filter)',function(data){
-		  if(data.index == 1){
-		    var url = "./index/subject/list";
-		    $.ajax({
-		      type : 'POST',
-		      url : url,
-		      data : "page=" + pageIndex + "&limit=" + limit,
-		      success : function(data){
-		        for(i in data){
-		          console.log(i, JSON.stringify(data[i]));
-		        }
-		      },
-		      error : function(){
-		        console.log("帖子太过久远,找不到了呢...")
-		      }
-		      
-		    })
-		  }
-		});
-		
-		
-		
+      form.render('radio');
+      laypage.render({
+        elem: 'tabPage',
+        count: total,
+        curr: pageObj.curr,
+        limit: pageObj.limit,
+        layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+        jump: function(pageObj ,first){
+          //console.log($(this));
+          if(!first){
+            ajaxPageHelper(pageObj);
+            //console.log(pageObj.curr, pageObj.limit);
+          }
+        }
+      });
+    },
+    error : function(){
+      console.log("帖子太过久远,找不到了呢...")
+    }
+  });   
+}		
+function addSubject(i, data, curr, limit){
+  var index = limit*(curr-1) + parseInt(i) + 1;
+  var liDom = '<li id="li' + data.subjectid +'"><h2>第' + index + '题:' + data.subjecttitle +  '</h2></li>';
+  $('#subjectList').append(liDom);
+  var od = '<div class="layui-form opdiv"><div class="layui-form-item" id="od' + data.subjectid + '"><div></div>'
+  $('#li' + data.subjectid).append(od);
+  var opra = '<input type="radio" name="op' + data.subjectid + '" value="A" title="' + data.subjectoptiona + '">';
+  var oprb = '<input type="radio" name="op' + data.subjectid + '" value="B" title="' + data.subjectoptionb + '">';
+  var oprc = '<input type="radio" name="op' + data.subjectid + '" value="C" title="' + data.subjectoptionc + '">';
+  var oprd = '<input type="radio" name="op' + data.subjectid + '" value="D" title="' + data.subjectoptiond + '">';
+  $('#od' + data.subjectid).append(opra).append(oprb).append(oprc).append(oprd);
+  
+  
+}		
 
 //================== 分页 start ========================		
 

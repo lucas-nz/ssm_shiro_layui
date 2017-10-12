@@ -6,6 +6,8 @@ public interface SysUserService {
 
   SysUsers getSysUserIfName(String username);
   
+  String getSaltIfName(String username);
+  
   
 }
 

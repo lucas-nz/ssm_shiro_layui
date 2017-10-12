@@ -9,6 +9,11 @@ public class EsysResult<T> {
   private T data;
   
   private String status;
+ 
+  
+  public EsysResult(){
+  }
+
   
   public EsysResult(int total, String status, String msg, T data) {
     this.data = data;

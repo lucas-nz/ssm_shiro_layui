@@ -22,10 +22,16 @@ public class SysUserServiceImpl implements SysUserService{
     Criteria criteria = example.createCriteria();
     criteria.andUsernameEqualTo(username);
     List<SysUsers> list = sysUsersMapper.selectByExample(example);
-    if (list != null && list.size() > 0) {
+    if (null != list && list.size() > 0) {
       return list.get(0);
     }
     return null;
   }
 
+  public String getSaltIfName(String username) {
+    
+      
+    return null;
+  }
+  
 }

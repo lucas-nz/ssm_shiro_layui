@@ -8,6 +8,7 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.credential.PasswordService;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
@@ -31,10 +32,10 @@ public class Myrealm extends AuthorizingRealm{
   //用于认证 authentication 验证
   @Override
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+    
     //token是用户输入的
     //第一步: 从token中取出身份信息
     String  username = (String)token.getPrincipal();
-    
     //根据用户输入的username从数据库中查找
     SysUsers sysuser = sysUserService.getSysUserIfName(username);
     
@@ -44,7 +45,8 @@ public class Myrealm extends AuthorizingRealm{
     if (Boolean.TRUE.equals(sysuser.getLocked())) {
       throw new LockedAccountException(); // 账号被锁定
     }
-    SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(sysuser.getUsername(),
+    SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(
+        sysuser.getUsername(),
         sysuser.getPassword(),
         this.getName());
     //如果查询到,返回认证信息AuthenticationInfo

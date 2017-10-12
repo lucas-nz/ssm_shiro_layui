@@ -22,8 +22,9 @@
 <body>
 	<div class="header">
 		<div class="main">
-			<a id="toIndex" href="./index" class="logo"><img src="resources/images/tattoo67.png" /><i
-				class="layui-icon">&#xe756;</i> </a>
+			<a id="toIndex" href="./index" class="logo"><img
+				src="resources/images/tattoo67.png" /><i class="layui-icon">&#xe756;</i>
+			</a>
 
 			<div class="nav">
 				<a href="./esysdoc"> <i class="layui-icon">&#xe705;</i> <font>文档</font>
@@ -45,54 +46,101 @@
 			</div>
 		</div>
 	</div>
-		<div class="main-body layui-clear">
-			<div class="wrap">
-				<div class="login-content">
-					<div class="es-panel">
-						<div class="layui-tab layui-tab-brief">
-							<ul class="layui-tab-title" style="height: 50px;">
-								<li class="layui-this">
-									<a href="login.html">登录</a>
-								</li>
-								<li>
-									<a href="register.html">注册</a>
-								</li>
-							</ul>
-						</div>
-						<div  id="loginDiv" class="layui-form layui-form-pane" style="margin-top: 20px;">
+	<div class="main-body layui-clear">
+		<div class="wrap">
+			<div class="login-content">
+				<div class="es-panel">
 
-							<div class="layui-form-item">
-								<label class="layui-form-label">用户名</label>
-								<div class="layui-input-inline">
-									<input type="text" name="username" autoFocus="true" 
-										lay-verify="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+					<div class="layui-row">
+						<div class="layui-col-md4">
+							<div class="layui-tab layui-tab-brief">
+								<ul class="layui-tab-title" style="height: 50px;">
+									<li class="layui-this"><a href="./toLogin">登录</a></li>
+									<li><a href="register.html">注册</a></li>
+								</ul>
+							</div>
+							<div id="loginDiv" class="layui-form layui-form-pane"
+								style="margin-top: 20px;">
+
+								<div class="layui-form-item">
+									<label class="layui-form-label">用户名</label>
+									<div class="layui-input-inline">
+										<input type="text" name="username" autoFocus="true"
+											lay-verify="username" placeholder="请输入用户名" autocomplete="off"
+											class="layui-input">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">密码</label>
+									<div class="layui-input-inline">
+										<input type="password" name="password" lay-verify="pass"
+											placeholder="请输入密码" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">人类验证</label>
+									<div class="layui-input-inline">
+										<input type="text" name="vcode" lay-verify="required"
+											placeholder="请输入答案" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<button id="loginBtn" class="layui-btn" lay-submit
+										lay-filter="loginForm">立即登录</button>
+									<span style="margin-left: 20px;"><a href="#">忘记密码</a></span>
 								</div>
 							</div>
-							<div class="layui-form-item">
-								<label class="layui-form-label">密码</label>
-								<div class="layui-input-inline">
-									<input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
-								</div>
-							</div>
-							<div class="layui-form-item">
-								<label class="layui-form-label">人类验证</label>
-								<div class="layui-input-inline">
-									<input type="text" name="vcode" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-								</div>
-							</div>
-							<div class="layui-form-item">
-								<button id="loginBtn" class="layui-btn" lay-submit lay-filter="loginForm">立即登录</button>
-								<span style="margin-left: 20px;"><a href="#">忘记密码</a></span>
+							<div class="form-app">
+								<span> 或者使用社交账号登入 <a href="#"> <i class="fa fa-qq"
+										style="font-size: 17px; color: #7CA9C9;" title="QQ登入"></i></a> <a
+									href="#"><i class="fa fa-wechat"
+										style="font-size: 17px; color: #44c569;" title="微信登入"></i></a>
+								</span>
 							</div>
 						</div>
+
+						<div class="layui-col-md8">
+							<div class="layui-carousel" id="login-carousel">
+								<div carousel-item="">
+									<div>
+										<img src="resources/images/carousel/2.png">
+									</div>
+									<div>
+										<img src="resources/images/carousel/3.png">
+									</div>
+									<div>
+										<img src="resources/images/carousel/4.png">
+									</div>
+									<div>
+										<img src="resources/images/carousel/5.png">
+									</div>
+
+									<div>
+										<img src="resources/images/carousel/6.png">
+									</div>
+									<div>
+										<img src="resources/images/carousel/7.png">
+									</div>
+
+								</div>
+							</div>
+
 						</div>
+
 					</div>
 
 				</div>
-
 			</div>
-			<script type="text/javascript" src="resources/index/js/index.js"></script>
-			<script type="text/javascript" src="resources/index/js/login.js"></script>
+
+
+
+		</div>
+	</div>
+	<jsp:include page="common/footer.jsp"></jsp:include>
+
+
+	<script type="text/javascript" src="resources/index/js/index.js"></script>
+	<script type="text/javascript" src="resources/index/js/login.js"></script>
 	<script type="text/javascript">
     
   </script>

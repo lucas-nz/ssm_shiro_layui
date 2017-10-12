@@ -5,7 +5,35 @@
 		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 	default-lazy-init="true">
    
-   	<bean id="realm" class="com.zhousz.realm.Myrealm"></bean>
+  	<!-- realm 实现 
+  	
+  	
+  	
+   	<bean id="realm" class="com.zhousz.realm.Myrealm">
+   		<property name="credentialsMatcher" ref="credentialsMatcher" />	
+   	  	<property name="cachingEnabled" value="false" />
+   	</bean>
+
+    
+    <bean id="cacheManager" class="com.zhousz.shiro.SpringCacheManagerWrapper">
+        <property name="cacheManager" ref="springCacheManager"/>
+    </bean>
+
+   	
+   	<bean id="credentialsMatcher" class="com.zhousz.credentials.RetryLimitHashedCredentialsMatcher">
+   		
+   		 <constructor-arg ref="cacheManager" /> 
+   		<property name="hashAlgorithmName" value="md5"></property>
+   		<property name="hashIterations" value="2"></property>
+   		<property name="storedCredentialsHexEncoded" value="true"></property>
+   	</bean>
+  	
+  	
+  	-->
+    
+    <bean id="realm" class="com.zhousz.realm.Myrealm"></bean>
+   
+   
    
    
      <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
@@ -25,10 +53,8 @@
         <property name="filterChainDefinitions">  
             <value>
             	/resources/** = anon 
-            	/esysvadio = authc
-            	/esysdoc = authc
-            	/esystest = authc
-            	/** = anon  
+            	/index = anon
+            	/user/** = authc  
             </value>  
         </property>  
     </bean>  

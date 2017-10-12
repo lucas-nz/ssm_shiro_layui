@@ -6,16 +6,6 @@ $(document).ready(function() {
 
 
     
-    laypage.render({
-      elem: 'tabPage',
-      count: 1000,
-      layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
-      jump: function(obj){
-        obj.count = 100;
-      }
-    });
-    
-    
     
     
     

@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.zhousz.dto.EsysResult;
 import com.zhousz.pojo.TbSubject;
 import com.zhousz.service.SubjectService;
 
@@ -25,10 +27,11 @@ public class IndexController {
   
   @RequestMapping("/subject/list")
   @ResponseBody
-  public List<TbSubject> geTbSubjects(){
-    return subjectService.geTbSubjects();
+  public EsysResult<List<TbSubject>> geTbSubjects(@RequestParam int page, @RequestParam int limit){
+    System.out.println(page + "," + limit);
+    return subjectService.geTbSubjects(page, limit);
   }
   
-  
+
   
 }

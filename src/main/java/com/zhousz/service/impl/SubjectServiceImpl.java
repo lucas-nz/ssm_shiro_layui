@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.zhousz.dto.EsysResult;
 import com.zhousz.mapper.TbSubjectMapper;
 import com.zhousz.pojo.TbSubject;
 import com.zhousz.service.SubjectService;
@@ -19,11 +20,10 @@ public class SubjectServiceImpl implements SubjectService{
   @Autowired
   private TbSubjectMapper subjectMapper;
   
-  public List<TbSubject> geTbSubjects() {
-    PageHelper.startPage(1, 10);
+  public EsysResult<List<TbSubject>> geTbSubjects(int page, int limit) {
+    PageHelper.startPage(page, limit);
     List<TbSubject> list = subjectMapper.selectByExample(null);
     PageInfo<TbSubject> pageInfo = new PageInfo<TbSubject>(list);
-    System.out.println(pageInfo);
-    return list;
+    return new EsysResult<List<TbSubject>>((int)pageInfo.getTotal(),"success", "success", list);
   }
 }

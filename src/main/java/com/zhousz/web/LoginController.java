@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zhousz.dto.EsysResult;
 import com.zhousz.pojo.SysUsers;
+import com.zhousz.service.PasswordHelper;
 import com.zhousz.service.SysUserService;
 
 @Controller
@@ -27,6 +28,9 @@ public class LoginController {
   
   @Autowired
   private SysUserService sysUserService;
+  
+  @Autowired
+  private PasswordHelper passwordHelper;
   
   @RequestMapping(value = "/toLogin")
   public String toLogin(){
@@ -39,13 +43,21 @@ public class LoginController {
     Subject currUser = SecurityUtils.getSubject();
     String status = null;
     String msg = null;
+    
     if (!currUser.isAuthenticated()) {
-      UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
+      String password = passwordHelper.getEntryPassword(user.getUsername(), user.getPassword());
+      UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),password);
       try {
+        
         currUser.login(token);
         status = "success";
         msg = "success";
-      } catch (IncorrectCredentialsException  e) {
+      }catch (UnknownAccountException e){
+        status = "error";
+        msg = "不存在的账号!";
+        System.out.println("不存在的账号!");
+      }
+      catch (IncorrectCredentialsException  e) {
         status = "error";
         msg = "错误的凭证!";
         System.out.println("错误的凭证!");
@@ -57,10 +69,6 @@ public class LoginController {
         status = "error";
         msg = "禁用的账号!";
         System.out.println("禁用的账号!");
-      } catch (UnknownAccountException e) {
-        status = "error";
-        msg = "错误的账号!";
-        System.out.println("错误的账号!");
       } catch (AuthenticationException e) {
         status = "error";
         msg = "错误的账号!";

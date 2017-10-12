@@ -39,38 +39,41 @@
 
 			</div>
 			<div class="nav-user">
-			<div class="nav-guest">
-				<shiro:guest>
-					<span> <a href="#"> <span><i
-								class="fa fa-user-circle-o fa-5x"></i></span></a> <a href="./toLogin">登录</a>
-						<a href="#">注册</a>
+				<div class="nav-guest">
+					<shiro:guest>
+						<span> 
+						<a href="#"> <span><i
+									class="fa fa-user-circle-o fa-5x"></i></span></a> <a href="./toLogin">登录</a>
+							<a href="#">注册</a>
 
-					</span>
-					<a href="#"> <i class="fa fa-qq" style="font-size: 20px;"></i>
-					</a>
-					<a href="#"> <i class="fa fa-wechat" style="font-size: 20px;"></i></a>
-				</shiro:guest>
-			
-			</div>
+						</span>
+						<a href="#"> <i class="fa fa-qq" style="font-size: 20px;"></i>
+						</a>
+						<a href="#"> <i class="fa fa-wechat" style="font-size: 20px;"></i></a>
+					</shiro:guest>
+
+				</div>
 				<shiro:user>
 					<ul class="layui-nav" style="margin-top: -15px">
 						<li class="layui-nav-item">
-						<a>
-							<img src="<%=path%>/resources/images/handsome.jpg" style="border-radius: 100%;"/>
-							<span><shiro:principal></shiro:principal></span>
+						<a> <img
+								src="<%=path%>/resources/images/handsome.jpg"
+								style="border-radius: 100%;" /> <span><shiro:principal></shiro:principal></span>
 						</a>
 							<dl class="layui-nav-child">
 								<dd>
 									<a href="javascript:;">修改信息</a>
 								</dd>
 								<dd>
+									<a href="./user/album">个人相册</a>
+								</dd>								
+								<dd>
 									<a href="javascript:;">安全管理</a>
 								</dd>
 								<dd>
 									<a href="./logout">退了</a>
 								</dd>
-							</dl>
-						</li>
+							</dl></li>
 					</ul>
 				</shiro:user>
 
@@ -92,9 +95,19 @@
 					<div class="es-search">
 						<a href="#"><i class="layui-icon" style="font-size: 30px;">&#xe615;</i></a>
 					</div>
-					<div class="layui-tab-content es-panel" style="min-height: 400px;">
+					<div class="layui-tab-content es-panel es-list"
+						style="min-height: 400px;">
 						<div class="layui-tab-item layui-show">内容1</div>
-						<div class="layui-tab-item" id="subjectList"></div>
+						<div class="layui-tab-item" id="subjectList">
+
+
+							<li>
+								<h2>测试测试测试测试测试测试</h2>
+							</li>
+							<li>
+								<h2>测试测试测试测试测试测试</h2>
+							</li>
+						</div>
 						<div class="layui-tab-item">内容3</div>
 						<div class="layui-tab-item">内容4</div>
 						<div class="layui-tab-item">内容5</div>
@@ -114,11 +127,6 @@
 	<input id="pageUrl" type="hidden" value="">
 	<script type="text/javascript"
 		src="<%=path%>/resources/index/js/index.js"></script>
-	<script type="text/javascript"
-		src="<%=path%>/resources/define/subject.js"></script>
-	<script type="text/javascript">
-    
-  </script>
 </body>
 
 </html>

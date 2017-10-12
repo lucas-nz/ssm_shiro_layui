@@ -1,8 +1,22 @@
-layui.use(['element', 'form', 'layer'], function() {
+layui.use(['element', 'form', 'layer', 'carousel'], function() {
 	var e = layui.element,
 	  layer = layui.layer,
+	  carousel = layui.carousel,
 		form = layui.form;
 
+	carousel.render({
+	  elem : '#login-carousel',
+    width: 700,
+    height: 360,
+	  anim : 'updown',
+	  interval : 5000,
+	  arrow : 'hover'
+	});
+	
+	$('#login-carousel').css('margin', '20px 0 0 30px');
+	
+	
+	
 	form.verify({
 		username: function(value, item) { //value：表单的值、item：表单的DOM对象
 		    if("" == value){
@@ -33,6 +47,12 @@ layui.use(['element', 'form', 'layer'], function() {
 	form.on('submit(loginForm)', function(data){
 	  console.log(JSON.stringify(data));
 	  console.log(data.field.username, data.field.password);
+  
+      layer.msg('正在登录',{
+        icon: 16,
+        shade: 0.1,
+        time: 10000
+      });
 	  $.ajax({
 	    method: 'POST',
 	    data: {
@@ -60,7 +80,7 @@ layui.use(['element', 'form', 'layer'], function() {
 	          shade: 0.1,
 	          time: 1000
 	        });
-	        setTimeout(loginClick, 2000);
+	        setTimeout(loginClick, 1000);
 	        
 	      }
 	    }
